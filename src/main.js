@@ -21,6 +21,7 @@ function hideLoader() {
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
   const userValue = refs.input.value.trim();
+  refs.gallery.innerHTML = '';
 
   if (!userValue) {
     iziToast.error({
@@ -36,6 +37,7 @@ refs.form.addEventListener('submit', e => {
   fetchImages(userValue)
     .then(images => {
       hideLoader();
+      refs.gallery.innerHTML = '';
 
       if (images.length === 0) {
         iziToast.info({
@@ -50,6 +52,8 @@ refs.form.addEventListener('submit', e => {
     })
     .catch(error => {
       hideLoader();
+      refs.gallery.innerHTML = '';
+
       iziToast.error({
         message: 'Something went wrong! Please try again later.',
         position: 'topRight',

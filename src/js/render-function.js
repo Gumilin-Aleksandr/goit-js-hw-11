@@ -1,6 +1,14 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  captionPosition: 'bottom',
+  overlayOpacity: 1,
+  showCounter: false,
+});
+
 export function renderGallery(images) {
   const gallery = document.querySelector('#gallery');
   gallery.innerHTML = '';
@@ -28,14 +36,6 @@ export function renderGallery(images) {
     .join('');
 
   gallery.innerHTML = markup;
-
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-    captionPosition: 'bottom',
-    overlayOpacity: 1,
-    showCounter: false,
-  });
 
   lightbox.refresh();
 }
